@@ -24,3 +24,4 @@ src/.phpunit.result.cache
 
 # Local test data
 test-import.json
+test-reservation.json
