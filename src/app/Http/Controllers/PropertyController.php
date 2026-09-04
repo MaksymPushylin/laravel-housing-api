@@ -15,8 +15,8 @@ class PropertyController extends Controller
         $data = $request->validated();
 
         $offers = Offer::query()
-            ->where('check_in', $data['check_in'])
-            ->where('check_out', $data['check_out'])
+            ->whereDate('check_in', $data['check_in'])
+            ->whereDate('check_out', $data['check_out'])
             ->where('max_guests', '>=', $data['guests'])
             ->where('available_units', '>', 0)
             ->where('expires_at', '>', now());

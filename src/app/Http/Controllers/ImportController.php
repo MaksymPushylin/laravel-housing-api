@@ -6,8 +6,8 @@ use App\Http\Requests\StoreImportRequest;
 use App\Jobs\ProcessImportJob;
 use App\Models\Import;
 use App\Models\Supplier;
-use Illuminate\Database\QueryException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Database\UniqueConstraintViolationException;
 
 class ImportController extends Controller
 {
@@ -27,11 +27,7 @@ class ImportController extends Controller
             ]);
 
             ProcessImportJob::dispatch($import, $data['offers']);
-        } catch (QueryException $exception) {
-            if (($exception->errorInfo[1] ?? null) !== 1062) {
-                throw $exception;
-            }
-
+        } catch (UniqueConstraintViolationException) {
             $import = Import::where('supplier_id', $supplier->id)
                 ->where('external_import_id', $data['external_import_id'])
                 ->firstOrFail();

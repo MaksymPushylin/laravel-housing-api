@@ -14,6 +14,8 @@ class ProcessImportJob implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
+    public int $tries = 1;
+
     public function __construct(
         public Import $import,
         public array $offers,
