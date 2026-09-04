@@ -21,3 +21,6 @@ src/storage/framework/views/*
 # PHPUnit
 .phpunit.result.cache
 src/.phpunit.result.cache
+
+# Local test data
+test-import.json
