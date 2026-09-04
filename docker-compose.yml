@@ -1,0 +1,47 @@
+services:
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: laravel-housing-api-php
+    working_dir: /var/www
+    volumes:
+      - ./src:/var/www
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - app
+
+  mysql:
+    image: mysql:8.4
+    container_name: laravel-housing-api-mysql
+    environment:
+      MYSQL_DATABASE: housing
+      MYSQL_USER: housing
+      MYSQL_PASSWORD: housing
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - app
+
+  redis:
+    image: redis:8
+    container_name: laravel-housing-api-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - app
+
+volumes:
+  mysql_data:
+  redis_data:
+
+networks:
+  app:

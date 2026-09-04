@@ -1,0 +1,23 @@
+# IDE
+.idea/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Laravel
+src/vendor/
+src/node_modules/
+
+# Laravel generated files
+src/storage/*.key
+src/storage/logs/*
+src/storage/framework/cache/*
+src/storage/framework/sessions/*
+src/storage/framework/testing/*
+src/storage/framework/views/*
+
+# PHPUnit
+.phpunit.result.cache
+src/.phpunit.result.cache
