@@ -42,4 +42,20 @@ class ImportController extends Controller
             'status' => $import->status,
         ], 202);
     }
+
+    public function show(Import $import): JsonResponse
+    {
+        return response()->json([
+            'id' => $import->id,
+            'supplier' => $import->supplier->code,
+            'external_import_id' => $import->external_import_id,
+            'sent_at' => $import->sent_at,
+            'status' => $import->status,
+            'total_offers' => $import->total_offers,
+            'processed_offers' => $import->processed_offers,
+            'error' => $import->error,
+            'created_at' => $import->created_at,
+            'completed_at' => $import->completed_at,
+        ]);
+    }
 }
