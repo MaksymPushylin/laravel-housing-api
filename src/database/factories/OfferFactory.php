@@ -24,7 +24,7 @@ class OfferFactory extends Factory
             'external_id' => fake()->unique()->uuid(),
             'check_in' => $checkIn,
             'check_out' => $checkOut,
-            'max_guests' => fake()->numberBetween(1, 6), 
+            'max_guests' => fake()->numberBetween(1, 6),
             'price' => fake()->randomFloat(2, 50, 500),
             'currency' => 'USD',
             'available_units' => fake()->numberBetween(1, 5),
