@@ -8,6 +8,8 @@ services:
     working_dir: /var/www
     volumes:
       - ./src:/var/www
+    ports:
+      - "8000:8000"
     depends_on:
       - mysql
       - redis
